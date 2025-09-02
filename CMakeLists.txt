@@ -13,12 +13,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Check for Jack (any OS)
-find_library(JACK_LIB jack)
-find_package(PkgConfig)
-pkg_check_modules(jack jack)
-if(JACK_LIB OR jack_FOUND)
-  set(HAVE_JACK TRUE)
-endif()
+#find_library(JACK_LIB jack)
+#find_package(PkgConfig)
+#pkg_check_modules(jack jack)
+#if(JACK_LIB OR jack_FOUND)
+    # HACK set(HAVE_JACK TRUE)
+#  set(HAVE_JACK FALSE)
+# endif()
+
+set(HAVE_JACK FALSE)
+set(ALSA TRUE)
+set(APPLE FALSE)
+set(WIN32 FALSE)
+set(ANDROID FALSE)
+
+set(RTMIDI_API_ALSA TRUE)
+set(RTMIDI_API_WINMM FALSE)
+set(RTMIDI_API_CORE FALSE)
+set(RTMIDI_API_AMIDI FALSE)
+set(RTMIDI_API_JACK FALSE)
+
 
 # Necessary for Windows
 if(WIN32)
@@ -39,11 +53,11 @@ endif()
 set(RTMIDI_TARGETNAME_UNINSTALL "rt_uninstall" CACHE STRING "Name of 'uninstall' build target")
 
 # API Options
-option(RTMIDI_API_JACK "Compile with JACK support." ${HAVE_JACK})
-option(RTMIDI_API_WINMM "Compile with WINMM support." ${WIN32})
-option(RTMIDI_API_CORE "Compile with CoreMIDI support." ${APPLE})
-option(RTMIDI_API_ALSA "Compile with ALSA support." ${ALSA})
-option(RTMIDI_API_AMIDI "Compile with Android support." ${ANDROID})
+#option(RTMIDI_API_JACK "Compile with JACK support." ${HAVE_JACK})
+#option(RTMIDI_API_WINMM "Compile with WINMM support." ${WIN32})
+#option(RTMIDI_API_CORE "Compile with CoreMIDI support." ${APPLE})
+#option(RTMIDI_API_ALSA "Compile with ALSA support." ${ALSA})
+#option(RTMIDI_API_AMIDI "Compile with Android support." ${ANDROID})
 
 # Add -Wall if possible
 if (CMAKE_COMPILER_IS_GNUCXX)
@@ -91,6 +105,7 @@ set(PACKAGE_DEPENDENCIES)
 # Tweak API-specific configuration.
 
 # Jack
+#[[
 if(RTMIDI_API_JACK)
   if (NOT HAVE_JACK)
     message(FATAL_ERROR "Jack API requested but no Jack dev libraries found")
@@ -116,6 +131,7 @@ if(RTMIDI_API_JACK)
     list(APPEND API_DEFS "-DJACK_HAS_PORT_RENAME")
   endif()
 endif()
+]]
 
 # ALSA
 if(RTMIDI_API_ALSA)
