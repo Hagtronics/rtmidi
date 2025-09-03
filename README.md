@@ -2,8 +2,9 @@
 
 This is my fork of RtMidi - I have modified the CMakeLists.txt to build a shared library on a Raspberry Pi with ALSA support.
 
-Do Not use this fork, instead go to to original at,
-
+# Do Not use this fork!!!!!
+  
+instead go to to original at,
 https://github.com/thestk/rtmidi
 
 ## Legal and ethical
