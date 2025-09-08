@@ -12,7 +12,7 @@ https://github.com/thestk/rtmidi
   /Home/pi
   
   Clone the code,
-  git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+  git clone https://github.com/Hagtronics/rtmidi
 
   CD to the directory,
   CD rtmidi
