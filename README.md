@@ -22,6 +22,9 @@ https://github.com/thestk/rtmidi
    
   Run the rebuild.sh script.  
   RtMidi will be built as a shared library and instanlles properly on the pi.  
+
+# Testing    
+  The shared_lib_test directory contains a shared library test project.  
     
 ## Legal and ethical
 
